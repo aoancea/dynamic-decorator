@@ -46,7 +46,7 @@ namespace Dynamic.Decorator.UnitTesting.Playground
 
 			CreateTypeWithDefaultConstructor(mb, "MyDynamicTypeWithDefaultConstructor");
 
-
+			CreateTypeWithDefaultConstructorAndPrivateField(mb, "MyDynamicTypeWithDefaultConstructorAndPrivateField");
 
 			ab.Save(aName.Name + ".dll");
 		}
@@ -74,6 +74,24 @@ namespace Dynamic.Decorator.UnitTesting.Playground
 			ctorIL.Emit(OpCodes.Ldarg_0);
 			ctorIL.Emit(OpCodes.Call, typeof(object).GetConstructor(Type.EmptyTypes));
 			ctorIL.Emit(OpCodes.Ret);
+
+			Type t = tb.CreateType();
+
+			return t;
+		}
+
+		public Type CreateTypeWithDefaultConstructorAndPrivateField(ModuleBuilder moduleBuilder, string typeName)
+		{
+			TypeBuilder tb = moduleBuilder.DefineType(typeName, TypeAttributes.Public);
+			
+			ConstructorBuilder ctor = tb.DefineConstructor(MethodAttributes.Public, CallingConventions.Standard, Type.EmptyTypes);
+
+			ILGenerator ctorIL = ctor.GetILGenerator();
+			ctorIL.Emit(OpCodes.Ldarg_0);
+			ctorIL.Emit(OpCodes.Call, typeof(object).GetConstructor(Type.EmptyTypes));
+			ctorIL.Emit(OpCodes.Ret);
+
+			tb.DefineField("m_number", typeof(int), FieldAttributes.Private);
 
 			Type t = tb.CreateType();
 
