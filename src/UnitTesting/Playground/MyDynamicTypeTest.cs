@@ -42,9 +42,9 @@ namespace Dynamic.Decorator.UnitTesting.Playground
 
 			ModuleBuilder mb = ab.DefineDynamicModule(aName.Name, aName.Name + ".dll");
 
-			CreateTypeWithDefaultConstructor(mb, "MyDynamicTypeWithDefaultConstructor");
+			CreateTypeWithImplicitDefaultConstructor(mb, "MyDynamicTypeWithDefaultConstructor");
 
-			CreateTypeWithCustomDefaultConstructor(mb, "MyDynamicTypeWithCustomDefaultConstructor");
+			CreateTypeWithDefaultConstructor(mb, "MyDynamicTypeWithCustomDefaultConstructor");
 
 
 
@@ -52,7 +52,7 @@ namespace Dynamic.Decorator.UnitTesting.Playground
 		}
 
 
-		public Type CreateTypeWithDefaultConstructor(ModuleBuilder moduleBuilder, string typeName)
+		public Type CreateTypeWithImplicitDefaultConstructor(ModuleBuilder moduleBuilder, string typeName)
 		{
 			TypeBuilder tb = moduleBuilder.DefineType(typeName, TypeAttributes.Public);
 
@@ -61,7 +61,7 @@ namespace Dynamic.Decorator.UnitTesting.Playground
 			return t;
 		}
 
-		public Type CreateTypeWithCustomDefaultConstructor(ModuleBuilder moduleBuilder, string typeName)
+		public Type CreateTypeWithDefaultConstructor(ModuleBuilder moduleBuilder, string typeName)
 		{
 			TypeBuilder tb = moduleBuilder.DefineType(typeName, TypeAttributes.Public);
 
