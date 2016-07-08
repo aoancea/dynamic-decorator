@@ -42,9 +42,9 @@ namespace Dynamic.Decorator.UnitTesting.Playground
 
 			ModuleBuilder mb = ab.DefineDynamicModule(aName.Name, aName.Name + ".dll");
 
-			CreateTypeWithImplicitDefaultConstructor(mb, "MyDynamicTypeWithDefaultConstructor");
+			CreateTypeWithImplicitDefaultConstructor(mb, "MyDynamicTypeWithImplicitDefaultConstructor");
 
-			CreateTypeWithDefaultConstructor(mb, "MyDynamicTypeWithCustomDefaultConstructor");
+			CreateTypeWithDefaultConstructor(mb, "MyDynamicTypeWithDefaultConstructor");
 
 
 
