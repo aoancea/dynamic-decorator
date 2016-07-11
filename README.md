@@ -7,4 +7,6 @@ For more information please read about the Decorator pattern [here](https://en.w
 
 ## Main branches of use
  * Tracing
+    * Log *inputs* and *outputs*
+    * Log the time it took to perform an operation
  * Caching
