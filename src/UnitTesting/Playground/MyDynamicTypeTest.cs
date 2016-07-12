@@ -48,6 +48,8 @@ namespace Dynamic.Decorator.UnitTesting.Playground
 
 			CreateTypeWithDefaultConstructorAndPrivateField(mb, "MyDynamicTypeWithDefaultConstructorAndPrivateField");
 
+			CreateTypeWithConstructorWithParameterAndAssignToPrivateField(mb, "CreateTypeWithConstructorWithParameterAndAssignToPrivateField");
+
 			ab.Save(aName.Name + ".dll");
 		}
 
@@ -83,7 +85,7 @@ namespace Dynamic.Decorator.UnitTesting.Playground
 		public Type CreateTypeWithDefaultConstructorAndPrivateField(ModuleBuilder moduleBuilder, string typeName)
 		{
 			TypeBuilder tb = moduleBuilder.DefineType(typeName, TypeAttributes.Public);
-			
+
 			ConstructorBuilder ctor = tb.DefineConstructor(MethodAttributes.Public, CallingConventions.Standard, Type.EmptyTypes);
 
 			ILGenerator ctorIL = ctor.GetILGenerator();
@@ -97,27 +99,38 @@ namespace Dynamic.Decorator.UnitTesting.Playground
 
 			return t;
 		}
+
+		public Type CreateTypeWithConstructorWithParameterAndAssignToPrivateField(ModuleBuilder moduleBuilder, string typeName)
+		{
+			TypeBuilder tb = moduleBuilder.DefineType(typeName, TypeAttributes.Public);
+
+			FieldBuilder fbNumber = tb.DefineField("m_number", typeof(int), FieldAttributes.Private);
+
+			Type[] ctorParameterTypes = new Type[] { typeof(int) };
+
+			ConstructorBuilder ctor = tb.DefineConstructor(MethodAttributes.Public, CallingConventions.Standard, ctorParameterTypes);
+
+			ILGenerator ctorIL = ctor.GetILGenerator();
+			ctorIL.Emit(OpCodes.Ldarg_0);
+			ctorIL.Emit(OpCodes.Call, typeof(object).GetConstructor(Type.EmptyTypes));
+			ctorIL.Emit(OpCodes.Ldarg_0);
+			ctorIL.Emit(OpCodes.Ldarg_1);
+			ctorIL.Emit(OpCodes.Stfld, fbNumber);
+			ctorIL.Emit(OpCodes.Ret);
+
+			Type t = tb.CreateType();
+
+			return t;
+		}
 	}
 
 	public class MyDynamicType
 	{
 		private int m_number;
 
-		public MyDynamicType() : this(42) { }
 		public MyDynamicType(int initNumber)
 		{
 			m_number = initNumber;
-		}
-
-		public int Number
-		{
-			get { return m_number; }
-			set { m_number = value; }
-		}
-
-		public int MyMethod(int multiplier)
-		{
-			return m_number * multiplier;
 		}
 	}
 }
