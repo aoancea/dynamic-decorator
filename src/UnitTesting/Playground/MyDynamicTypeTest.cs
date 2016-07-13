@@ -48,7 +48,7 @@ namespace Dynamic.Decorator.UnitTesting.Playground
 
 			EmitDynamicCustomType3(mb, "DynamicCustomType3");
 
-			CreateTypeWithConstructorWithParameterAndAssignToPrivateField(mb, "CreateTypeWithConstructorWithParameterAndAssignToPrivateField");
+			EmitDynamicCustomType4(mb, "DynamicCustomType4");
 
 			CreateTypeWithConstructorThatCallsConstructorWithParameterAndAssignToPrivateField(mb, "CreateTypeWithConstructorThatCallsConstructorWithParameterAndAssignToPrivateField");
 
@@ -102,7 +102,7 @@ namespace Dynamic.Decorator.UnitTesting.Playground
 			return t;
 		}
 
-		public Type CreateTypeWithConstructorWithParameterAndAssignToPrivateField(ModuleBuilder moduleBuilder, string typeName)
+		public Type EmitDynamicCustomType4(ModuleBuilder moduleBuilder, string typeName)
 		{
 			TypeBuilder tb = moduleBuilder.DefineType(typeName, TypeAttributes.Public);
 
@@ -178,6 +178,16 @@ namespace Dynamic.Decorator.UnitTesting.Playground
 		public CustomType3()
 		{
 
+		}
+	}
+
+	public class CustomType4
+	{
+		private int m_number;
+
+		public CustomType4(int value)
+		{
+			m_number = value;
 		}
 	}
 
