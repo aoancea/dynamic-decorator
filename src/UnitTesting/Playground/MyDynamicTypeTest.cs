@@ -42,28 +42,28 @@ namespace Dynamic.Decorator.UnitTesting.Playground
 
 			ModuleBuilder mb = ab.DefineDynamicModule(aName.Name, aName.Name + ".dll");
 
-			EmitDynamicCustomType1(mb, "DynamicCustomType1");
+			EmitCustomType1(mb, "EmittedCustomType1");
 
-			EmitDynamicCustomType2(mb, "DynamicCustomType2");
+			EmitCustomType2(mb, "EmittedCustomType2");
 
-			EmitDynamicCustomType3(mb, "DynamicCustomType3");
+			EmitCustomType3(mb, "EmittedCustomType3");
 
-			EmitDynamicCustomType4(mb, "DynamicCustomType4");
+			EmitCustomType4(mb, "EmittedCustomType4");
 
-			EmitDynamicCustomType5(mb, "DynamicCustomType5");
+			EmitCustomType5(mb, "EmittedCustomType5");
 
 			ab.Save(aName.Name + ".dll");
 		}
 
 
-		public Type EmitDynamicCustomType1(ModuleBuilder moduleBuilder, string typeName)
+		public Type EmitCustomType1(ModuleBuilder moduleBuilder, string typeName)
 		{
 			TypeBuilder tb = moduleBuilder.DefineType(typeName, TypeAttributes.Public);
 
 			return tb.CreateType();
 		}
 
-		public Type EmitDynamicCustomType2(ModuleBuilder moduleBuilder, string typeName)
+		public Type EmitCustomType2(ModuleBuilder moduleBuilder, string typeName)
 		{
 			TypeBuilder tb = moduleBuilder.DefineType(typeName, TypeAttributes.Public);
 
@@ -80,7 +80,7 @@ namespace Dynamic.Decorator.UnitTesting.Playground
 			return tb.CreateType();
 		}
 
-		public Type EmitDynamicCustomType3(ModuleBuilder moduleBuilder, string typeName)
+		public Type EmitCustomType3(ModuleBuilder moduleBuilder, string typeName)
 		{
 			TypeBuilder tb = moduleBuilder.DefineType(typeName, TypeAttributes.Public);
 
@@ -96,7 +96,7 @@ namespace Dynamic.Decorator.UnitTesting.Playground
 			return tb.CreateType();
 		}
 
-		public Type EmitDynamicCustomType4(ModuleBuilder moduleBuilder, string typeName)
+		public Type EmitCustomType4(ModuleBuilder moduleBuilder, string typeName)
 		{
 			TypeBuilder tb = moduleBuilder.DefineType(typeName, TypeAttributes.Public);
 
@@ -117,7 +117,7 @@ namespace Dynamic.Decorator.UnitTesting.Playground
 			return tb.CreateType();
 		}
 
-		public Type EmitDynamicCustomType5(ModuleBuilder moduleBuilder, string typeName)
+		public Type EmitCustomType5(ModuleBuilder moduleBuilder, string typeName)
 		{
 			TypeBuilder tb = moduleBuilder.DefineType(typeName, TypeAttributes.Public);
 
