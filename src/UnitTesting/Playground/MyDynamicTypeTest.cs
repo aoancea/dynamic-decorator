@@ -1,14 +1,14 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
+using System;
 using System.Reflection;
 using System.Reflection.Emit;
 
 namespace Dynamic.Decorator.UnitTesting.Playground
 {
-	[TestClass]
+    [TestFixture]
 	public class MyDynamicTypeTest
 	{
-		[TestMethod]
+		[TestCase]
 		public void Build_A_Dynamic_Type()
 		{
 
