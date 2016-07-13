@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/aoancea/dynamic-decorator.svg?branch=master)](https://travis-ci.org/aoancea/dynamic-decorator)
+[![Build status](https://ci.appveyor.com/api/projects/status/xstw78sygkscl1vk?svg=true)](https://ci.appveyor.com/project/aoancea/dynamic-decorator)
 
 # dynamic-decorator
 
