@@ -42,9 +42,9 @@ namespace Dynamic.Decorator.UnitTesting.Playground
 
 			ModuleBuilder mb = ab.DefineDynamicModule(aName.Name, aName.Name + ".dll");
 
-			BuildDynamicCustomType1(mb, "DynamicCustomType1");
+			EmitDynamicCustomType1(mb, "DynamicCustomType1");
 
-			BuildDynamicCustomType2(mb, "DynamicCustomType2");
+			EmitDynamicCustomType2(mb, "DynamicCustomType2");
 
 			CreateTypeWithDefaultConstructorAndPrivateField(mb, "MyDynamicTypeWithDefaultConstructorAndPrivateField");
 
@@ -56,7 +56,7 @@ namespace Dynamic.Decorator.UnitTesting.Playground
 		}
 
 
-		public Type BuildDynamicCustomType1(ModuleBuilder moduleBuilder, string typeName)
+		public Type EmitDynamicCustomType1(ModuleBuilder moduleBuilder, string typeName)
 		{
 			TypeBuilder tb = moduleBuilder.DefineType(typeName, TypeAttributes.Public);
 
@@ -65,7 +65,7 @@ namespace Dynamic.Decorator.UnitTesting.Playground
 			return t;
 		}
 
-		public Type BuildDynamicCustomType2(ModuleBuilder moduleBuilder, string typeName)
+		public Type EmitDynamicCustomType2(ModuleBuilder moduleBuilder, string typeName)
 		{
 			TypeBuilder tb = moduleBuilder.DefineType(typeName, TypeAttributes.Public);
 
