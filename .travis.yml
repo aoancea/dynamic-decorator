@@ -1,0 +1,4 @@
+language: csharp
+solution: ./src/Dynamic.Decorator.sln
+install:
+  - nuget restore ./src/Dynamic.Decorator.sln
