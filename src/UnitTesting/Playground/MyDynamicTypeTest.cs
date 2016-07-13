@@ -50,6 +50,8 @@ namespace Dynamic.Decorator.UnitTesting.Playground
 
 			CreateTypeWithConstructorWithParameterAndAssignToPrivateField(mb, "CreateTypeWithConstructorWithParameterAndAssignToPrivateField");
 
+			CreateTypeWithConstructorThatCallsConstructorWithParameterAndAssignToPrivateField(mb, "CreateTypeWithConstructorThatCallsConstructorWithParameterAndAssignToPrivateField");
+
 			ab.Save(aName.Name + ".dll");
 		}
 
@@ -122,11 +124,47 @@ namespace Dynamic.Decorator.UnitTesting.Playground
 
 			return t;
 		}
+
+		public Type CreateTypeWithConstructorThatCallsConstructorWithParameterAndAssignToPrivateField(ModuleBuilder moduleBuilder, string typeName)
+		{
+			TypeBuilder tb = moduleBuilder.DefineType(typeName, TypeAttributes.Public);
+
+			FieldBuilder fbNumber = tb.DefineField("m_number", typeof(int), FieldAttributes.Private);
+
+			Type[] ctorParameterTypes = new Type[] { typeof(int) };
+
+			ConstructorBuilder ctor1 = tb.DefineConstructor(MethodAttributes.Public, CallingConventions.Standard, ctorParameterTypes);
+
+			ILGenerator ctorIL1 = ctor1.GetILGenerator();
+			ctorIL1.Emit(OpCodes.Ldarg_0);
+			ctorIL1.Emit(OpCodes.Call, typeof(object).GetConstructor(Type.EmptyTypes));
+			ctorIL1.Emit(OpCodes.Ldarg_0);
+			ctorIL1.Emit(OpCodes.Ldarg_1);
+			ctorIL1.Emit(OpCodes.Stfld, fbNumber);
+			ctorIL1.Emit(OpCodes.Ret);
+
+
+			ConstructorBuilder ctor2 = tb.DefineConstructor(MethodAttributes.Public, CallingConventions.Standard, Type.EmptyTypes);
+
+			ILGenerator ctorIL2 = ctor2.GetILGenerator();
+			ctorIL2.Emit(OpCodes.Ldarg_0);
+			ctorIL2.Emit(OpCodes.Ldc_I4_S, 23);
+			ctorIL2.Emit(OpCodes.Call, ctor1);
+			ctorIL1.Emit(OpCodes.Ret);
+
+			Type t = tb.CreateType();
+
+			return t;
+		}
 	}
 
 	public class MyDynamicType
 	{
 		private int m_number;
+
+		public MyDynamicType()
+			: this(23)
+		{ }
 
 		public MyDynamicType(int initNumber)
 		{
