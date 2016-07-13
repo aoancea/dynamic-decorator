@@ -60,9 +60,7 @@ namespace Dynamic.Decorator.UnitTesting.Playground
 		{
 			TypeBuilder tb = moduleBuilder.DefineType(typeName, TypeAttributes.Public);
 
-			Type t = tb.CreateType();
-
-			return t;
+			return tb.CreateType();
 		}
 
 		public Type EmitDynamicCustomType2(ModuleBuilder moduleBuilder, string typeName)
@@ -79,9 +77,7 @@ namespace Dynamic.Decorator.UnitTesting.Playground
 			ctorIL.Emit(OpCodes.Call, typeof(object).GetConstructor(Type.EmptyTypes));
 			ctorIL.Emit(OpCodes.Ret);
 
-			Type t = tb.CreateType();
-
-			return t;
+			return tb.CreateType();
 		}
 
 		public Type EmitDynamicCustomType3(ModuleBuilder moduleBuilder, string typeName)
@@ -97,9 +93,7 @@ namespace Dynamic.Decorator.UnitTesting.Playground
 
 			tb.DefineField("m_number", typeof(int), FieldAttributes.Private);
 
-			Type t = tb.CreateType();
-
-			return t;
+			return tb.CreateType();
 		}
 
 		public Type EmitDynamicCustomType4(ModuleBuilder moduleBuilder, string typeName)
@@ -120,9 +114,7 @@ namespace Dynamic.Decorator.UnitTesting.Playground
 			ctorIL.Emit(OpCodes.Stfld, fbNumber);
 			ctorIL.Emit(OpCodes.Ret);
 
-			Type t = tb.CreateType();
-
-			return t;
+			return tb.CreateType();
 		}
 
 		public Type EmitDynamicCustomType5(ModuleBuilder moduleBuilder, string typeName)
@@ -152,9 +144,7 @@ namespace Dynamic.Decorator.UnitTesting.Playground
 			ctorIL2.Emit(OpCodes.Call, ctor1);
 			ctorIL1.Emit(OpCodes.Ret);
 
-			Type t = tb.CreateType();
-
-			return t;
+			return tb.CreateType();
 		}
 	}
 
