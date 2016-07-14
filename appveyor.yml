@@ -7,7 +7,7 @@ branches:
 
 test:
   assemblies:
-    - src\UnitTesting\bin\$(configuration)\Dynamic.Decorator.UnitTesting.dll
+    - '**\*.UnitTesting.dll'
 
 before_build:
   - nuget restore src\Dynamic.Decorator.sln
