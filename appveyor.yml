@@ -1,0 +1,10 @@
+version: 1.0.{build}
+
+branches:
+  # whitelist
+  only:
+    - master
+	
+test:
+  assemblies:
+    - src/UnitTesting/bin/$(configuration)/Dynamic.Decorator.UnitTesting.dll
