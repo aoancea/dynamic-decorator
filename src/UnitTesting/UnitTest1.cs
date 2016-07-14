@@ -5,7 +5,7 @@ namespace Dynamic.Decorator.UnitTesting
     [TestFixture]
     public class UnitTest1
     {
-        [TestCase]
+        [Test]
         public void TestMethod1()
         {
         }

@@ -8,8 +8,8 @@ namespace Dynamic.Decorator.UnitTesting.Playground
     [TestFixture]
 	public class MyDynamicTypeTest
 	{
-		[TestCase]
-		public void Build_A_Dynamic_Type()
+		[Test]
+        public void Build_A_Dynamic_Type()
 		{
 
 			/*
