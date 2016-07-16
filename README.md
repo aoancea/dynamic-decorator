@@ -9,7 +9,13 @@ For more information please read about the Decorator pattern [here](https://en.w
 
 
 
-## Nuget
+## Main uses
+ * Tracing
+    * Log *inputs* and *outputs*
+    * Log the time it took to perform an operation
+ * Caching
+ * 
+ ## Nuget
  * Tracing
     * Log *inputs* and *outputs*
     * Log the time it took to perform an operation
