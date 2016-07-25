@@ -38,7 +38,7 @@ namespace Dynamic.Decorator.UnitTesting.Playground
 
 			AssemblyName aName = new AssemblyName("DynamicAssemblyExample");
 
-			AssemblyBuilder ab = AppDomain.CurrentDomain.DefineDynamicAssembly(aName, AssemblyBuilderAccess.RunAndSave);
+            AssemblyBuilder ab = AppDomain.CurrentDomain.DefineDynamicAssembly(aName, AssemblyBuilderAccess.RunAndSave, AppDomain.CurrentDomain.BaseDirectory);
 
 			ModuleBuilder mb = ab.DefineDynamicModule(aName.Name, aName.Name + ".dll");
 
