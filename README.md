@@ -13,6 +13,9 @@ For more information please read about the Decorator pattern [here](https://en.w
     * Log *inputs* and *outputs*
     * Log the time it took to perform an operation
  * Caching
+ * Transaction
+    * Transaction wrapper
+    * Transaction re-trier
  
 
 ## Nuget
