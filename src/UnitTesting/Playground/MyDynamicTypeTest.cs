@@ -54,6 +54,8 @@ namespace Dynamic.Decorator.UnitTesting.Playground
 
             EmitCustomType6(mb, "EmittedCustomType6");
 
+            EmitCustomType7(mb, "EmittedCustomType7");
+
             ab.Save(aName.Name + ".dll");
 		}
 
@@ -201,6 +203,69 @@ namespace Dynamic.Decorator.UnitTesting.Playground
 
             return tb.CreateType();
         }
+
+        public Type EmitCustomType7(ModuleBuilder moduleBuilder, string typeName)
+        {
+            TypeBuilder tb = moduleBuilder.DefineType(typeName, TypeAttributes.Public);
+
+            FieldBuilder fbNumber = tb.DefineField("m_number", typeof(int), FieldAttributes.Private);
+
+            Type[] ctorParameterTypes = new Type[] { typeof(int) };
+
+            ConstructorBuilder ctor1 = tb.DefineConstructor(MethodAttributes.Public, CallingConventions.Standard, ctorParameterTypes);
+
+            ILGenerator ctorIL1 = ctor1.GetILGenerator();
+            ctorIL1.Emit(OpCodes.Ldarg_0);
+            ctorIL1.Emit(OpCodes.Call, typeof(object).GetConstructor(Type.EmptyTypes));
+            ctorIL1.Emit(OpCodes.Ldarg_0);
+            ctorIL1.Emit(OpCodes.Ldarg_1);
+            ctorIL1.Emit(OpCodes.Stfld, fbNumber);
+            ctorIL1.Emit(OpCodes.Ret);
+
+
+            ConstructorBuilder ctor2 = tb.DefineConstructor(MethodAttributes.Public, CallingConventions.Standard, Type.EmptyTypes);
+
+            ILGenerator ctorIL2 = ctor2.GetILGenerator();
+            ctorIL2.Emit(OpCodes.Ldarg_0);
+            ctorIL2.Emit(OpCodes.Ldc_I4_S, 23);
+            ctorIL2.Emit(OpCodes.Call, ctor1);
+            ctorIL1.Emit(OpCodes.Ret);
+
+
+            PropertyBuilder pbNumber = tb.DefineProperty("Number", PropertyAttributes.HasDefault, typeof(int), null);
+
+            MethodAttributes getSetAttr = MethodAttributes.Public | MethodAttributes.SpecialName | MethodAttributes.HideBySig;
+
+            MethodBuilder mbNumberGetAccessor = tb.DefineMethod("get_Number", getSetAttr, typeof(int), null);
+
+            ILGenerator numberGetIL = mbNumberGetAccessor.GetILGenerator();
+            numberGetIL.Emit(OpCodes.Ldarg_0);
+            numberGetIL.Emit(OpCodes.Ldfld, fbNumber);
+            numberGetIL.Emit(OpCodes.Ret);
+
+            MethodBuilder mbNumberSetAccessor = tb.DefineMethod("set_Number", getSetAttr, typeof(void), new Type[] { typeof(int) });
+
+            ILGenerator numberSetIL = mbNumberSetAccessor.GetILGenerator();
+            numberSetIL.Emit(OpCodes.Ldarg_0);
+            numberSetIL.Emit(OpCodes.Ldarg_1);
+            numberSetIL.Emit(OpCodes.Stfld, fbNumber);
+            numberSetIL.Emit(OpCodes.Ret);
+
+            pbNumber.SetGetMethod(mbNumberGetAccessor);
+            pbNumber.SetSetMethod(mbNumberSetAccessor);
+
+
+            MethodBuilder mbMyMethod = tb.DefineMethod("MyMethod", MethodAttributes.Public, typeof(int), new Type[] { typeof(int) });
+
+            ILGenerator myMethodGetIL = mbMyMethod.GetILGenerator();
+            myMethodGetIL.Emit(OpCodes.Ldarg_0);
+            myMethodGetIL.Emit(OpCodes.Ldfld, fbNumber);
+            myMethodGetIL.Emit(OpCodes.Ldarg_1);
+            myMethodGetIL.Emit(OpCodes.Mul);
+            myMethodGetIL.Emit(OpCodes.Ret);
+
+            return tb.CreateType();
+        }
     }
 
 	public class CustomType1
@@ -267,6 +332,31 @@ namespace Dynamic.Decorator.UnitTesting.Playground
         {
             get { return m_number; }
             set { m_number = value; }
+        }
+    }
+
+    public class CustomType7
+    {
+        private int m_number;
+
+        public CustomType7()
+            : this(23)
+        { }
+
+        public CustomType7(int value)
+        {
+            m_number = value;
+        }
+
+        public int Number
+        {
+            get { return m_number; }
+            set { m_number = value; }
+        }
+
+        public int MyMethod(int multiplier)
+        {
+            return m_number * multiplier;
         }
     }
 }
