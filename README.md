@@ -25,3 +25,4 @@ T
 
 ## DI Containers 
  * Unity
+ * Simple Injector
