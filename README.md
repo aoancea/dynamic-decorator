@@ -26,3 +26,4 @@ T
 ## DI Containers 
  * Unity
  * Simple Injector
+ * Castle Windsor
