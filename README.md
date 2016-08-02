@@ -23,3 +23,6 @@ For more information please read about the Decorator pattern [here](https://en.w
  * Castle Windsor
 
 ## Nuget
+
+## Contribute & Develop
+We've set up a separate document for our [contribution guidelines](https://github.com/aoancea/dynamic-decorator/blob/master/CONTRIBUTING.md)
