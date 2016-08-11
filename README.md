@@ -25,4 +25,4 @@ For more information please read about the Decorator pattern [here](https://en.w
 ## Nuget
 
 ## Contribute & Develop
-We've set up a separate document for our [contribution guidelines](https://github.com/aoancea/dynamic-decorator/blob/master/CONTRIBUTING.md)
+Here you can find a document with the [contribution guidelines](https://github.com/aoancea/dynamic-decorator/blob/master/CONTRIBUTING.md)
