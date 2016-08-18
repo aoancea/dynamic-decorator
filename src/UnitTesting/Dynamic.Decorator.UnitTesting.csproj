@@ -61,6 +61,7 @@
   <ItemGroup>
     <Compile Include="Playground\MyDynamicTypeTest.cs" />
     <Compile Include="Tracing\TimeDecoratorTest.cs" />
+    <Compile Include="Tracing\EmitTest.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
