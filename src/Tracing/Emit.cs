@@ -83,7 +83,6 @@ namespace Dynamic.Decorator.Tracing
             MethodBuilder mbMyMethod = tb.DefineMethod(implementedMethodName, MethodAttributes.Public | MethodAttributes.HideBySig | MethodAttributes.NewSlot | MethodAttributes.Virtual | MethodAttributes.Final, typeof(string), new Type[] { typeof(string) });
 
             ILGenerator myMethodGetIL = mbMyMethod.GetILGenerator();
-            myMethodGetIL.Emit(OpCodes.Ldarg_0);
             myMethodGetIL.Emit(OpCodes.Ldarg_1);
             myMethodGetIL.Emit(OpCodes.Ret);
 

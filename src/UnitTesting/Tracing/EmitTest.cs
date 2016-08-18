@@ -39,6 +39,7 @@ namespace Dynamic.Decorator.UnitTesting.Tracing
             Assert.IsNotNull(customFoo);
             Assert.AreEqual(fooMock.Object, customFoo.GetType().GetField("foo").GetValue(customFoo));
             Assert.AreEqual(loggerMock.Object, customFoo.GetType().GetField("logger").GetValue(customFoo));
+            Assert.AreEqual("test", customFoo.GetType().GetMethod("Bar").Invoke(customFoo, new object[] { "test" }));
         }
     }
 
