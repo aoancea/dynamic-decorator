@@ -2,7 +2,6 @@
 using Moq;
 using NUnit.Framework;
 using System;
-using System.Diagnostics;
 using System.Reflection;
 
 namespace Dynamic.Decorator.UnitTesting.Tracing
@@ -40,14 +39,6 @@ namespace Dynamic.Decorator.UnitTesting.Tracing
             Assert.AreEqual(fooMock.Object, customFoo.GetType().GetField("foo").GetValue(customFoo));
             Assert.AreEqual(loggerMock.Object, customFoo.GetType().GetField("logger").GetValue(customFoo));
             Assert.AreEqual("test", customFoo.GetType().GetMethod("Bar").Invoke(customFoo, new object[] { "test" }));
-        }
-    }
-
-    internal class Logger : ILogger
-    {
-        public void Log(Stopwatch sw)
-        {
-            throw new NotImplementedException();
         }
     }
 }
