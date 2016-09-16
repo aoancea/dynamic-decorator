@@ -4,12 +4,12 @@ using System;
 
 namespace Dynamic.Decorator.UnitTesting.Playground.AmbientTransaction.Service
 {
-	public class NoAmbientTransactionService
+	public class TransactionService
 	{
 		private readonly ISquareRepository squareRepository;
 		private readonly IRectangleRepository rectangleRepository;
 
-		public NoAmbientTransactionService(ISquareRepository squareRepository, IRectangleRepository rectangleRepository)
+		public TransactionService(ISquareRepository squareRepository, IRectangleRepository rectangleRepository)
 		{
 			this.squareRepository = squareRepository;
 			this.rectangleRepository = rectangleRepository;
