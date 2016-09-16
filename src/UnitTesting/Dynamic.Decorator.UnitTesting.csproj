@@ -68,6 +68,11 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="Playground\AmbientTransaction\Context.cs" />
+    <Compile Include="Playground\AmbientTransaction\Entity\Rectangle.cs" />
+    <Compile Include="Playground\AmbientTransaction\Entity\Square.cs" />
+    <Compile Include="Playground\AmbientTransaction\Repository\RectangleRepository.cs" />
+    <Compile Include="Playground\AmbientTransaction\Repository\SquareRepository.cs" />
     <Compile Include="Playground\MyDynamicTypeTest.cs" />
     <Compile Include="Tracing\TimeDecoratorTest.cs" />
     <Compile Include="Tracing\EmitTest.cs" />
@@ -86,9 +91,7 @@
       <Name>Dynamic.Decorator.Tracing</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Playground\AmbientTransaction\" />
-  </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
