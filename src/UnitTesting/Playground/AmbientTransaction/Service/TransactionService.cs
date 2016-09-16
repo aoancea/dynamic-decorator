@@ -4,7 +4,16 @@ using System;
 
 namespace Dynamic.Decorator.UnitTesting.Playground.AmbientTransaction.Service
 {
-	public class TransactionService
+	public interface ITransactionService
+	{
+		void InsertSquare(Square square);
+
+		void InsertRectangle(Rectangle rectangle);
+
+		void InsertSquareAndRectangle(Square square, Rectangle rectangle);
+	}
+
+	public class TransactionService : ITransactionService
 	{
 		private readonly ISquareRepository squareRepository;
 		private readonly IRectangleRepository rectangleRepository;

@@ -30,7 +30,7 @@ namespace Dynamic.Decorator.UnitTesting.Playground.AmbientTransaction
 		[Test]
 		public void InsertSquare_SquareIsInsertedInItsOwnTransaction()
 		{
-			TransactionService noAmbientTransactionService = new TransactionService(new SquareRepository(new Context("squareContext")), new RectangleRepository(new Context("rectangleContext")));
+			ITransactionService noAmbientTransactionService = new TransactionService(new SquareRepository(new Context("squareContext")), new RectangleRepository(new Context("rectangleContext")));
 
 			Square squareToInsert = new Square() { ID = Guid.NewGuid(), Name = "Square1" };
 
@@ -47,7 +47,7 @@ namespace Dynamic.Decorator.UnitTesting.Playground.AmbientTransaction
 		[Test]
 		public void InsertRectangle_RectangleIsInsertedInItsOwnTransaction()
 		{
-			TransactionService noAmbientTransactionService = new TransactionService(new SquareRepository(new Context("squareContext")), new RectangleRepository(new Context("rectangleContext")));
+			ITransactionService noAmbientTransactionService = new TransactionService(new SquareRepository(new Context("squareContext")), new RectangleRepository(new Context("rectangleContext")));
 
 			Rectangle rectangleToInsert = new Rectangle() { ID = Guid.NewGuid(), Name = "Rectangle1" };
 
@@ -63,7 +63,7 @@ namespace Dynamic.Decorator.UnitTesting.Playground.AmbientTransaction
 		[Test]
 		public void InsertSquareAndRectangle_WhenNoExceptionIsThrown_ThenSquareAndRectableAreInsertedInTheirOwnSeparateTransactions()
 		{
-			TransactionService noAmbientTransactionService = new TransactionService(new SquareRepository(new Context("squareContext")), new RectangleRepository(new Context("rectangleContext")));
+			ITransactionService noAmbientTransactionService = new TransactionService(new SquareRepository(new Context("squareContext")), new RectangleRepository(new Context("rectangleContext")));
 
 			Square squareToInsert = new Square() { ID = Guid.NewGuid(), Name = "Square1" };
 			Rectangle rectangleToInsert = new Rectangle() { ID = Guid.NewGuid(), Name = "Rectangle1" };
@@ -86,7 +86,7 @@ namespace Dynamic.Decorator.UnitTesting.Playground.AmbientTransaction
 		[Test]
 		public void InsertSquareAndRectangle_WhenExceptionIsThrownBeforeInsertingRectangle_ThenSquareIsInsertedInItsOwnTransactionAnyway()
 		{
-			TransactionService noAmbientTransactionService = new TransactionService(new SquareRepository(new Context("squareContext")), new ThrowExceptionRectangleRepository(new RectangleRepository(new Context("rectangleContext"))));
+			ITransactionService noAmbientTransactionService = new TransactionService(new SquareRepository(new Context("squareContext")), new ThrowExceptionRectangleRepository(new RectangleRepository(new Context("rectangleContext"))));
 
 			Square squareToInsert = new Square() { ID = Guid.NewGuid(), Name = "Square1" };
 			Rectangle rectangleToInsert = new Rectangle() { ID = Guid.NewGuid(), Name = "Rectangle1" };
