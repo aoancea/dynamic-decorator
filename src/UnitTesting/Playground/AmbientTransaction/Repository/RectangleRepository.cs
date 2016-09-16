@@ -7,7 +7,7 @@ namespace Dynamic.Decorator.UnitTesting.Playground.AmbientTransaction.Repository
 	{
 		Rectangle GetByID(Guid id);
 
-		void Upsert(Rectangle Rectangle);
+		void Upsert(Rectangle rectangle);
 
 		void Delete(Guid id);
 	}
@@ -26,17 +26,17 @@ namespace Dynamic.Decorator.UnitTesting.Playground.AmbientTransaction.Repository
 			return context.RectangleSet.Find(id);
 		}
 
-		public void Upsert(Rectangle Rectangle)
+		public void Upsert(Rectangle rectangle)
 		{
-			Rectangle dbRectangle = context.RectangleSet.Find(Rectangle.ID);
+			Rectangle dbRectangle = context.RectangleSet.Find(rectangle.ID);
 
 			if (dbRectangle == null)
 			{
-				context.RectangleSet.Add(dbRectangle);
+				context.RectangleSet.Add(rectangle);
 			}
 			else
 			{
-				dbRectangle.Name = Rectangle.Name;
+				dbRectangle.Name = rectangle.Name;
 			}
 
 			context.SaveChanges();

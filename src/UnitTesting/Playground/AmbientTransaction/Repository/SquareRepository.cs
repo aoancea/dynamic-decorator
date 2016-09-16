@@ -32,7 +32,7 @@ namespace Dynamic.Decorator.UnitTesting.Playground.AmbientTransaction.Repository
 
 			if (dbSquare == null)
 			{
-				context.SquareSet.Add(dbSquare);
+				context.SquareSet.Add(square);
 			}
 			else
 			{
