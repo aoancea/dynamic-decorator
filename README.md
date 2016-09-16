@@ -14,7 +14,7 @@ For more information please read about the Decorator pattern [here](https://en.w
     * Log the time it took to perform an operation
  * Caching
  * Transaction
-    * [Transaction wrapper](https://github.com/aoancea/dynamic-decorator/tree/master/src/UnitTesting/Playground/AmbientTransaction)
+    * [Transaction wrapper](https://github.com/aoancea/dynamic-decorator/issues/4)
     * Transaction re-trier
 
 ## DI Containers 
