@@ -71,6 +71,7 @@
     <Compile Include="Playground\AmbientTransaction\Context.cs" />
     <Compile Include="Playground\AmbientTransaction\Entity\Rectangle.cs" />
     <Compile Include="Playground\AmbientTransaction\Entity\Square.cs" />
+    <Compile Include="Playground\AmbientTransaction\NoAmbientTransactionServiceTest.cs" />
     <Compile Include="Playground\AmbientTransaction\Repository\RectangleRepository.cs" />
     <Compile Include="Playground\AmbientTransaction\Repository\SquareRepository.cs" />
     <Compile Include="Playground\AmbientTransaction\Service\NoAmbientTransactionService.cs" />

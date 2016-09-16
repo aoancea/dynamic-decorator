@@ -10,9 +10,11 @@ namespace Dynamic.Decorator.UnitTesting.Playground.AmbientTransaction
 		public DbSet<Rectangle> RectangleSet { get; set; }
 
 		public Context()
-			: base("")
+			: base("Data Source=ALEX\\SQLEXPRESS2012;Initial Catalog=AmbientTransaction_Test;Integrated Security=True")
 		{
 			Database.Log = (msg) => { System.Diagnostics.Debug.WriteLine(msg); };
+
+			Database.Initialize(true);
 		}
 	}
 }
