@@ -73,6 +73,7 @@
     <Compile Include="Playground\AmbientTransaction\Entity\Square.cs" />
     <Compile Include="Playground\AmbientTransaction\Repository\RectangleRepository.cs" />
     <Compile Include="Playground\AmbientTransaction\Repository\SquareRepository.cs" />
+    <Compile Include="Playground\AmbientTransaction\Service\NoAmbientTransactionService.cs" />
     <Compile Include="Playground\MyDynamicTypeTest.cs" />
     <Compile Include="Tracing\TimeDecoratorTest.cs" />
     <Compile Include="Tracing\EmitTest.cs" />
