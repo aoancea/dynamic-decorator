@@ -12,7 +12,7 @@ For more information please read about the Decorator pattern [here](https://en.w
  * Tracing
     * Log *inputs* and *outputs*
     * Log the time it took to perform an operation
- * Caching
+ * Caching(using the [Cached Repository Pattern](http://ardalis.com/introducing-the-cachedrepository-pattern))
  * Transaction
     * [Transaction wrapper](https://github.com/aoancea/dynamic-decorator/issues/4)
     * Transaction re-trier
